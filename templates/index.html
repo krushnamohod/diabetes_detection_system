@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h2>Diabetes Prediction Form</h2>
+    <form method="post">
+        <label for="gender">Are you a man or a woman?</label>
+        <select id="gender" name="gender" onchange="togglePregnancy()" required>
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+        </select>
+        <br><br>
+        
+        <div id="pregnancyField" style="display: none;">
+            <label for="pregnancies">Number of Pregnancies:</label>
+            <input type="number" id="pregnancies" name="pregnancies" min="0">
+            <br><br>
+        </div>
+        
+        <label for="glucose">Glucose Level:</label>
+        <input type="number" step="0.1" id="glucose" name="glucose" required>
+        <br><br>
+
+        <label for="blood_pressure">Blood Pressure:</label>
+        <input type="number" step="0.1" id="blood_pressure" name="blood_pressure" required>
+        <br><br>
+
+        <label for="skin_thickness">Skin Thickness:</label>
+        <input type="number" step="0.1" id="skin_thickness" name="skin_thickness" required>
+        <br><br>
+
+        <label for="insulin">Insulin Level:</label>
+        <input type="number" step="0.1" id="insulin" name="insulin" required>
+        <br><br>
+
+        <label for="bmi">BMI:</label>
+        <input type="number" step="0.1" id="bmi" name="bmi" required>
+        <br><br>
+
+        <label for="dpf">Diabetes Pedigree Function:</label>
+        <input type="number" step="0.01" id="dpf" name="dpf" required>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" required>
+        <br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if result %}
+        <h3>Prediction: {{ result }}</h3>
+    {% endif %}
+
+    <script>
+        function togglePregnancy() {
+            var gender = document.getElementById("gender").value;
+            var pregnancyField = document.getElementById("pregnancyField");
+            
+            if (gender === "woman") {
+                pregnancyField.style.display = "block";
+            } else {
+                pregnancyField.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
