@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained logistic regression model
-model = pickle.load(open('logistic_regression_model.pkl', 'rb'))
+model = pickle.load(open('diabetes_logistic_regression_model.pkl', 'rb'))
 
 @app.route('/', methods=['GET', 'POST'])
 def predict():
